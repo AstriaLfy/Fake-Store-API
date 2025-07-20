@@ -1,4 +1,5 @@
 import 'package:fakestrore_api/models/product_model.dart';
+import 'package:fakestrore_api/pages/detailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fakestrore_api/bloc/product_bloc.dart';
@@ -57,7 +58,11 @@ class _HomepageState extends State<Homepage> {
                 final desc = product.description;
                 final imageUrl = product.images.isNotEmpty ? product.images[0] : '';
 
-                return Card(
+                return InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(productID: product.id,)));
+                  },
+                  child: Card(
                   elevation: 4,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -117,6 +122,7 @@ class _HomepageState extends State<Homepage> {
                       ],
                     ),
                   ),
+                ),
                 );
               },
             );

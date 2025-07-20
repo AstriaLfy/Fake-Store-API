@@ -10,7 +10,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<GetProductEvent>((event, emit) async {
          emit(ProductLoading());
          final response = await http.get(Uri.parse("https://api.escuelajs.co/api/v1/products"));
-         emit(ProductSucceed(products: productFromJson(response.body)));
+         emit(ProductSucceed(products: productListFromJson(response.body)));
     });
   }
 }
